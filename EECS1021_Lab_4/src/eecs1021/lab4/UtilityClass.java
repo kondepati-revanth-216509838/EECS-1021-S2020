@@ -196,16 +196,10 @@ public class UtilityClass {
 		int place = (digits % 2 == 0 ? middlePlace: middlePlace + 1);
 		
 		
-		System.out.println("Number: " + n);
-		
 		for(int i = 0; (digits % 2 == 0 ? i < place : i < place - 1); i++) {
-			/* In this place, code is supposed to start from outwards and start comparing the numbers while going inward.
-			 * */
 
-			int left = (n % (int) Math.pow(10, place - i + 1)) / (int)Math.pow(10, place - i);;
+			int left = (n / (int) Math.pow(10, digits - i - 1)) % 10;
 			int right = (n % (int) Math.pow(10, i + 1)) / (int)Math.pow(10, i);
-			
-			System.out.println(left + " " + right);
 			
 			if (left != right) {
 				return false;

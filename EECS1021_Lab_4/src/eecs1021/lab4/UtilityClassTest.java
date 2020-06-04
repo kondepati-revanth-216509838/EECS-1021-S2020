@@ -114,7 +114,7 @@ public class UtilityClassTest {
 				UtilityClass.isPrime ( 13));
 	}
 	
-//	@Test
+	@Test
 	public void test00_isPalindromeInt() {
 		assertEquals("isPalindromeInt(101) says it's false when it's true.", true, UtilityClass.isPalindromeInt(101));
 		assertEquals("isPalindromeInt(121) says it's false when it's true.", true, UtilityClass.isPalindromeInt(121));
@@ -122,6 +122,8 @@ public class UtilityClassTest {
 		assertEquals("isPalindromeInt(38233283) says it's false when it's true.", true, UtilityClass.isPalindromeInt(38233283));
 		assertEquals("isPalindromeInt(32932) says it's false when it's true.", false, UtilityClass.isPalindromeInt(32932));
 		assertEquals("isPalindromeInt(898) says it's false when it's true.", true, UtilityClass.isPalindromeInt(898));
+		assertEquals("isPalindromeInt(1221) says it's false when it's true.", true, UtilityClass.isPalindromeInt(1221));
+		
 	}
 	
 	@Test

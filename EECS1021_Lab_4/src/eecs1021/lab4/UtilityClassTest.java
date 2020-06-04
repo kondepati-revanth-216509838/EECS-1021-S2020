@@ -114,7 +114,7 @@ public class UtilityClassTest {
 				UtilityClass.isPrime ( 13));
 	}
 	
-	@Test
+//	@Test
 	public void test00_isPalindromeInt() {
 		assertEquals("isPalindromeInt(101) says it's false when it's true.", true, UtilityClass.isPalindromeInt(101));
 		assertEquals("isPalindromeInt(121) says it's false when it's true.", true, UtilityClass.isPalindromeInt(121));
@@ -134,5 +134,16 @@ public class UtilityClassTest {
 		
 		assertEquals("not giving perfect square of 2", false, UtilityClass.isPerfectSquare(2));
 		assertEquals("not giving perfect square of 9", true, UtilityClass.isPerfectSquare(9));
+	}
+	
+	@Test
+	public void test00_evenlyDivisible() {
+		assertEquals("Wrong answer", true, UtilityClass.evenlyDivisible(5, 15));
+		assertEquals("Wrong answer", false, UtilityClass.evenlyDivisible(8, 0));
+		assertEquals("Wrong answer", false, UtilityClass.evenlyDivisible(0, 8));
+		assertEquals("Wrong answer", true, UtilityClass.evenlyDivisible(3, 15));
+		assertEquals("Wrong answer", true, UtilityClass.evenlyDivisible(4, 28));
+		assertEquals("Wrong answer", false, UtilityClass.evenlyDivisible(9, 17));
+		
 	}
 }

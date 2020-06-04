@@ -36,8 +36,7 @@ public class UtilityClass {
 		 * Test and make sure they can handle arithmetic exception
 		 * 
 		 */
-		 
-		return(a != 0 && b != 0 ? a % b == 0 || b % a == 0 : false);
+		return (a != 0 && b != 0 ? a % b == 0 || b % a == 0: false);
 	}
 
 	/**

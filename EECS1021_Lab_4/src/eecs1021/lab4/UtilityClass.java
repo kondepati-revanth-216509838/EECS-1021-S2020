@@ -36,7 +36,7 @@ public class UtilityClass {
 		 * Test and make sure they can handle arithmetic exception
 		 * 
 		 */
-		return (a != 0 && b != 0 ? a % b == 0 || b % a == 0: false);
+		return (a != 0 && b != 0 ? a % b == 0 || b % a == 0 : false);
 	}
 
 	/**
@@ -73,8 +73,8 @@ public class UtilityClass {
 
 	public static int getRandomNumber(int x, int y) {
 		Random rand = new Random();
-		return rand.nextInt(y) + x;
-		
+		return rand.nextInt((y - x) + 1) + x;
+
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class UtilityClass {
 
 		for (int i = 0; i < n; i++) {
 
-			int rnd = rand.nextInt(y) + x;
+			int rnd = rand.nextInt((y - x) + 1) + x;
 
 			result += "(" + rnd + ")";
 		}
@@ -160,7 +160,7 @@ public class UtilityClass {
 	 */
 
 	public static boolean isPerfectSquare(int n) {
-		return (Math.pow(n, 0.5) == (double)((int) Math.pow(n, 0.5)));
+		return (Math.pow(n, 0.5) == (double) ((int) Math.pow(n, 0.5)));
 	}
 
 	/**
@@ -187,29 +187,27 @@ public class UtilityClass {
 	 */
 	public static boolean isPalindromeInt(int n) {
 		int digits = 0;
-		
+
 		for (int temp = n; temp > 0; temp /= 10) {
 			digits++;
 		}
-		
-		int middlePlace = (int)Math.floor((double)digits/2.0);
-		int place = (digits % 2 == 0 ? middlePlace: middlePlace + 1);
-		
-		
-		for(int i = 0; (digits % 2 == 0 ? i < place : i < place - 1); i++) {
+
+		int middlePlace = (int) Math.floor((double) digits / 2.0);
+		int place = (digits % 2 == 0 ? middlePlace : middlePlace + 1);
+
+		for (int i = 0; (digits % 2 == 0 ? i < place : i < place - 1); i++) {
 
 			int left = (n / (int) Math.pow(10, digits - i - 1)) % 10;
-			int right = (n % (int) Math.pow(10, i + 1)) / (int)Math.pow(10, i);
-			
+			int right = (n % (int) Math.pow(10, i + 1)) / (int) Math.pow(10, i);
+
 			if (left != right) {
 				return false;
 			}
 
 		}
-		
-		
+
 		return true;
-		
+
 	}
 
 	/**
@@ -239,19 +237,19 @@ public class UtilityClass {
 	public static int digitSum(int number) {
 		int digits = 0;
 		int sum = 0;
-		int temp = number;
 		
-		// Working perfect
+		int temp = number;
+
 		while (temp != 0) {
-			temp /=  10;
+			temp /= 10;
 			digits++;
 		}
-		
+
 		for (int i = 0; i < digits; i++) {
-			int digit = (number % (int) Math.pow(10, i + 1)) / (int)Math.pow(10, i);
+			int digit = (number % (int) Math.pow(10, i + 1)) / (int) Math.pow(10, i);
 			sum += digit;
 		}
-		
+
 		return sum;
 	}
 
@@ -284,19 +282,19 @@ public class UtilityClass {
 		int digits = 0;
 		int sumEven = 0;
 		int temp = number;
-		
+
 		while (temp != 0) {
-			temp /=  10;
+			temp /= 10;
 			digits++;
 		}
-		
+
 		for (int i = 0; i < digits; i++) {
-			int digit = (number % (int) Math.pow(10, i + 1)) / (int)Math.pow(10, i);
+			int digit = (number % (int) Math.pow(10, i + 1)) / (int) Math.pow(10, i);
 			if (digit % 2 == 0) {
 				sumEven += digit;
 			}
 		}
-		
+
 		return sumEven;
 	}
 
@@ -340,7 +338,7 @@ public class UtilityClass {
 	 */
 
 	public static boolean isCongruent(int a, int b, int m) {
-		return (a != 0 && b != 0 && m > 0 ? (a-b)% m == 0: false);
+		return (a != 0 && b != 0 && m > 0 ? (a - b) % m == 0 : false);
 	}
 
 	/**

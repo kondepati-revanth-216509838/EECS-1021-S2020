@@ -16,6 +16,7 @@ import org.junit.Rule;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UtilityClassTest {
+	
 	@Rule
 	public Timeout globalTimeout = Timeout.seconds(1);
 	
@@ -146,6 +147,11 @@ public class UtilityClassTest {
 		assertEquals("Wrong answer", true, UtilityClass.evenlyDivisible(3, 15));
 		assertEquals("Wrong answer", true, UtilityClass.evenlyDivisible(4, 28));
 		assertEquals("Wrong answer", false, UtilityClass.evenlyDivisible(9, 17));
+		
+	}
+	
+	@Test
+	public void test00_getRandomNumber() {
 		
 	}
 }

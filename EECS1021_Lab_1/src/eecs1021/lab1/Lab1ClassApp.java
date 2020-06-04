@@ -62,6 +62,9 @@ public class Lab1ClassApp {
 		 * avg Passed
 		 * isEven Passed
 		 * */
+		
+		System.out.println("Test fixAngle(7000) = "+Lab1Class.fixAngle(7000));
+		System.out.println("Test numRevolutions(7080) = "+Lab1Class.numRevolutions(7080));
 	}
 	
 }

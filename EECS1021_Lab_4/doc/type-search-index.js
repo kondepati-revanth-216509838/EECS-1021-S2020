@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"eecs1021.lab4","l":"UtilityClass"}]

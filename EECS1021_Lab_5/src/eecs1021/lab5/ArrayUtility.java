@@ -46,7 +46,9 @@ public class ArrayUtility {
 	public static int numberOfEvens(int[] inputarray) {
 		int count = 0;
 		for (int i = 0; i < inputarray.length; i++) {
-			if (inputarray[i] % 2 == 0) {count++;}
+			if (inputarray[i] % 2 == 0) {
+				count++;
+			}
 		}
 		return count;
 	}
@@ -71,12 +73,12 @@ public class ArrayUtility {
 
 	public static double avgAreaofRectangeles(Rectangle[] inputarray) {
 		int sumArea = 0;
-		
-		for(int i = 0; i < inputarray.length; i++) {
+
+		for (int i = 0; i < inputarray.length; i++) {
 			sumArea += inputarray[i].getArea();
 		}
-		
-		double average = (double)sumArea / (double)inputarray.length;
+
+		double average = (double) sumArea / (double) inputarray.length;
 		return average;
 	}
 
@@ -105,13 +107,13 @@ public class ArrayUtility {
 
 	public static double average2D(int[][] inputarray) {
 		int sum = 0, count = 0;
-		for(int i = 0; i < inputarray.length; i ++) {
-			for(int j = 0; j < inputarray[i].length; j ++) {
+		for (int i = 0; i < inputarray.length; i++) {
+			for (int j = 0; j < inputarray[i].length; j++) {
 				sum += inputarray[i][j];
 				count++;
 			}
 		}
-		return (double)sum / (double)count;
+		return (double) sum / (double) count;
 	}
 
 	/**
@@ -138,19 +140,20 @@ public class ArrayUtility {
 	 */
 
 	public static int[] minmax2D(int[][] inputarray) {
-		//edit
 		int max = Integer.MIN_VALUE;
 		int min = Integer.MAX_VALUE;
-		
-		for (int i = 0; i < inputarray.length; i ++) {
-			for (int j = 0; i < inputarray[i].length;) {
-					max = Math.max(max,inputarray[i][j]);
-					min = Math.min(min,inputarray[i][j]);
+
+		for (int i = 0; i < inputarray.length; i++) {
+
+			for (int j = 0; j < inputarray[i].length; j++) {
+				max = Math.max(max, inputarray[i][j]);
+				min = Math.min(min, inputarray[i][j]);
 			}
+
 		}
-		
-		int[] result = {min, max};
-		
+
+		int[] result = { min, max };
+
 		return result;
 	}
 
@@ -184,13 +187,13 @@ public class ArrayUtility {
 		for (int i = 0; i < inputarray.length; i++) {
 			if (inputarray[i] % 2 == 1) {
 				count++;
-				sum += (double)inputarray[i];
+				sum += (double) inputarray[i];
 			}
 		}
 		if (count == 0) {
 			return 0;
 		}
-		return sum / (double)count;
+		return sum / (double) count;
 	}
 
 	/**
@@ -216,20 +219,22 @@ public class ArrayUtility {
 	 * </pre>
 	 * 
 	 * @param inputarray input array of integer
-	 * @return  array of <code>int</code> contains the unique
-	 * elements after removing the duplicate elements from the input array
+	 * @return array of <code>int</code> contains the unique elements after removing
+	 *         the duplicate elements from the input array
 	 */
 
 	public static int[] removeDuplicatesElement(int[] inputarray) {
-		//edit
+		// edit
+		if (inputarray.length == 1) {
+			return inputarray;
+		}
 		int[] mould = new int[inputarray.length];
 		int min = Integer.MIN_VALUE;
 		for (int i = 0; i < inputarray.length; i++) {
-			
+
 		}
 	}
-	
-	
+
 	/**
 	 * 
 	 * Implement the method below that takes an array of <code>int</code> numbers as
@@ -254,38 +259,30 @@ public class ArrayUtility {
 	 * 
 	 * 
 	 * 
-	 * @param inputarray input array of integer 
-	 * @return   true if all elements belonging to this input array
-	 * are in a sequence of increasing consecutive integers and returns false
-	 * otherwise.
+	 * @param inputarray input array of integer
+	 * @return true if all elements belonging to this input array are in a sequence
+	 *         of increasing consecutive integers and returns false otherwise.
 	 */
 
 	public static boolean isConsecutive(int[] inputarray) {
-		//edit
-		if (inputarray.length > 2) {
-		int[] diff = new int[inputarray.length - 1];
-		
-		for (int i = 0; i < diff.length; i++) {
-			diff[i] = inputarray[i + 1] - inputarray[i];
-		}
-		
-		for (int i = 0; i < diff.length - 1; i++) {
-			if(diff[i + 1] != diff[i]) {
-				return false;
-			}
-		}
-		return true;
-		
-		}
-		
-		if (inputarray.length > 1) {
-			return inputarray[1] % inputarray[0] == 0 || inputarray[0] % inputarray[1] == 0;
-		} else {
-			return false;
-		}
-	}
 
-	
-	
+		if (inputarray.length > 2) {
+			int[] diff = new int[inputarray.length - 1];
+
+			for (int i = 0; i < diff.length; i++) {
+				diff[i] = inputarray[i + 1] - inputarray[i];
+			}
+
+			for (int i = 0; i < diff.length - 1; i++) {
+				if (diff[i + 1] != diff[i]) {
+					return false;
+				}
+			}
+			return true;
+
+		}
+
+		return false;
+	}
 
 }

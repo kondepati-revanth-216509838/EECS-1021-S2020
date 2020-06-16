@@ -158,7 +158,18 @@ public class ArrayUtility {
 	 *         average of type double
 	 */
 	public static double averageOfOdd(int[] inputarray) {
-		
+		int count = 0;
+		double sum = 0.0;
+		for (int i = 0; i < inputarray.length; i++) {
+			if (inputarray[i] % 2 == 1) {
+				count++;
+				sum += (double)inputarray[i];
+			}
+		}
+		if (count == 0) {
+			return 0;
+		}
+		return sum / (double)count;
 	}
 
 	/**
@@ -189,7 +200,7 @@ public class ArrayUtility {
 	 */
 
 	public static int[] removeDuplicatesElement(int[] inputarray) {
-		
+		// Good news: Allowed to sort
 	}
 	
 	
@@ -224,8 +235,18 @@ public class ArrayUtility {
 	 */
 
 	public static boolean isConsecutive(int[] inputarray) {
+		int[] diff = new int[inputarray.length - 1];
 		
-
+		for (int i = 0; i < diff.length; i++) {
+			diff[i] = inputarray[i + 1] - inputarray[i];
+		}
+		
+		for (int i = 0; i < diff.length - 1; i++) {
+			if(diff[i + 1] != diff[i]) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	

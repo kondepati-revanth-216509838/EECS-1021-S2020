@@ -76,7 +76,8 @@ public class ArrayUtility {
 			sumArea += inputarray[i].getArea();
 		}
 		
-		return sumArea;
+		double average = (double)sumArea / (double)inputarray.length;
+		return average;
 	}
 
 	/**
@@ -103,7 +104,14 @@ public class ArrayUtility {
 	 */
 
 	public static double average2D(int[][] inputarray) {
-		
+		int sum = 0, count = 0;
+		for(int i = 0; i < inputarray.length; i ++) {
+			for(int j = 0; j < inputarray[i].length; j ++) {
+				sum += inputarray[i][j];
+				count++;
+			}
+		}
+		return (double)sum / (double)count;
 	}
 
 	/**
@@ -130,7 +138,20 @@ public class ArrayUtility {
 	 */
 
 	public static int[] minmax2D(int[][] inputarray) {
+		//edit
+		int max = Integer.MIN_VALUE;
+		int min = Integer.MAX_VALUE;
 		
+		for (int i = 0; i < inputarray.length; i ++) {
+			for (int j = 0; i < inputarray[i].length;) {
+					max = Math.max(max,inputarray[i][j]);
+					min = Math.min(min,inputarray[i][j]);
+			}
+		}
+		
+		int[] result = {min, max};
+		
+		return result;
 	}
 
 	/**
@@ -200,7 +221,12 @@ public class ArrayUtility {
 	 */
 
 	public static int[] removeDuplicatesElement(int[] inputarray) {
-		// Good news: Allowed to sort
+		//edit
+		int[] mould = new int[inputarray.length];
+		int min = Integer.MIN_VALUE;
+		for (int i = 0; i < inputarray.length; i++) {
+			
+		}
 	}
 	
 	
@@ -235,6 +261,8 @@ public class ArrayUtility {
 	 */
 
 	public static boolean isConsecutive(int[] inputarray) {
+		//edit
+		if (inputarray.length > 2) {
 		int[] diff = new int[inputarray.length - 1];
 		
 		for (int i = 0; i < diff.length; i++) {
@@ -247,6 +275,14 @@ public class ArrayUtility {
 			}
 		}
 		return true;
+		
+		}
+		
+		if (inputarray.length > 1) {
+			return inputarray[1] % inputarray[0] == 0 || inputarray[0] % inputarray[1] == 0;
+		} else {
+			return false;
+		}
 	}
 
 	

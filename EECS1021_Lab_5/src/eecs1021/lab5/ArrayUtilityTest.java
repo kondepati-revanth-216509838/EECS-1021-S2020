@@ -169,5 +169,28 @@ public class ArrayUtilityTest {
 				Arrays.toString(myList), n, expect);
 		assertTrue(str, expect == n);
 	}
+	
+	@Test
+	public void test__00removeDuplicates() {
+		final int[] test = {3,4,5,6,7,8,9,8,7};
+		final int[] expect = {3,4,5,6,7,8,9};
+		int[] result = ArrayUtility.removeDuplicatesElement(test);
+		String str = String.format("\n Test removeDuplicateElements fail for %s. Returned (%s), but correct is (%s)", Arrays.toString(test), result,expect );
+		assertTrue(str, arrayMatch(result, expect));
+	}
+	
+	boolean arrayMatch(int[]check, int[] expect) {
+		if (check.length != expect.length) {
+			return false;
+		}
+		
+		for (int i = 0; i < check.length; i ++) {
+			if (check[i] != expect[i]) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
 
 }

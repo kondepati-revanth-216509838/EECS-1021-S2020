@@ -225,14 +225,24 @@ public class ArrayUtility {
 
 	public static int[] removeDuplicatesElement(int[] inputarray) {
 		// edit
+		
 		if (inputarray.length == 1) {
 			return inputarray;
 		}
+		
 		int[] mould = new int[inputarray.length];
-		int min = Integer.MIN_VALUE;
-		for (int i = 0; i < inputarray.length; i++) {
-
-		}
+		for (int i = 1; i < inputarray.length; i++) {
+	        int current = inputarray[i];
+	        int j = i - 1;
+	        while(j >= 0 && current < inputarray[j]) {
+	            inputarray[j+1] = inputarray[j];
+	            j--;
+	        }
+	        // at this point we've exited, so j is either -1
+	        // or it's at the first element where current >= a[j]
+	        inputarray[j+1] = current;
+	    }
+		return inputarray;
 	}
 
 	/**

@@ -151,7 +151,24 @@ public class StringUtility {
 	 *         string.
 	 */
 	public static int lengthofMaxConsecutiveZeros(String str) {
+		int count = 0;
+		int result = 0;
 		
+		for (int i = 0; i < str.length() - 1; i++) {
+			char check = str.charAt(i);
+			char checkNext = str.charAt(i + 1);
+			if (check == 48 && checkNext == 48) {
+				count++;
+			}
+			
+			if (check != checkNext) {
+				result = Math.max(result,count);
+				count = 0;
+			}
+			
+		}
+		
+		return result;
 	}
 
 	/**

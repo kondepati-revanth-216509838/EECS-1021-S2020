@@ -88,6 +88,16 @@ public class StringUtility {
 	 */
 
 	public static String removeDuplicatesChar(String str) {
+		char[] blocks = new char[str.length()];
+		
+		for(int i = 0; i < str.length(); i++) {
+			blocks[i] = str.charAt(i);
+			System.out.print(blocks[i]);
+		}
+		
+		return "";
+		
+		
 		
 	}
 
@@ -151,22 +161,10 @@ public class StringUtility {
 	 *         string.
 	 */
 	public static int lengthofMaxConsecutiveZeros(String str) {
+		// edit
 		int count = 0;
 		int result = 0;
 		
-		for (int i = 0; i < str.length() - 1; i++) {
-			char check = str.charAt(i);
-			char checkNext = str.charAt(i + 1);
-			if (check == 48 && checkNext == 48) {
-				count++;
-			}
-			
-			if (check != checkNext) {
-				result = Math.max(result,count);
-				count = 0;
-			}
-			
-		}
 		
 		return result;
 	}
@@ -197,8 +195,17 @@ public class StringUtility {
 	 * characters from the input string.
 	 */
 	public static String removeConsecutiveDuplicates(String str) {
+		// Edit
+		String result = "";
+		for (int i = 0; i < str.length() - 1; i++) {
+			char check = str.charAt(i);
+			
+			if (check != str.charAt(i + 1)) {
+				result += check;
+			}
 		
-
+		}
+		return result;
 	}
 
 	
@@ -263,7 +270,8 @@ public class StringUtility {
 	 */
 
     public static String compressString(String inputStr) {
-        
+        String result = "";
+        return result;
     }
 
 	

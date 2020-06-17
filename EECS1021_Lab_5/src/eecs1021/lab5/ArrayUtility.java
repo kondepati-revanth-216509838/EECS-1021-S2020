@@ -229,8 +229,7 @@ public class ArrayUtility {
 		if (inputarray.length == 1) {
 			return inputarray;
 		}
-		
-		int[] mould = new int[inputarray.length];
+	
 		for (int i = 1; i < inputarray.length; i++) {
 	        int current = inputarray[i];
 	        int j = i - 1;
@@ -238,11 +237,19 @@ public class ArrayUtility {
 	            inputarray[j+1] = inputarray[j];
 	            j--;
 	        }
-	        // at this point we've exited, so j is either -1
-	        // or it's at the first element where current >= a[j]
 	        inputarray[j+1] = current;
 	    }
+		
+		int trueLength = 0;
+		
+		for (int i = 0; i < inputarray.length - 1; i ++) {
+			if (inputarray[i] != inputarray[i + 1]) {
+				trueLength++;
+			}
+		}
+		System.out.println(trueLength);
 		return inputarray;
+		//sorting reference link: https://stackabuse.com/sorting-algorithms-in-java/#insertionsort
 	}
 
 	/**
@@ -283,8 +290,8 @@ public class ArrayUtility {
 				diff[i] = inputarray[i + 1] - inputarray[i];
 			}
 
-			for (int i = 0; i < diff.length - 1; i++) {
-				if (diff[i + 1] != diff[i]) {
+			for (int j = 0; j < diff.length - 1; j++) {
+				if (diff[j + 1] != diff[j]) {
 					return false;
 				}
 			}

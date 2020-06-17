@@ -49,7 +49,14 @@ public class StringUtility {
 	 */
 
 	public static int digitCountinString(String str) {
-		
+		int digit = 0;
+		for (int i = 0; i < str.length(); i++) {
+			char check = str.charAt(i);
+			if (check >= 48 && check <= 57) {
+				digit++;
+			}
+		}
+		return digit;
 	}
 
 	/**
@@ -109,12 +116,20 @@ public class StringUtility {
 	 */
 
 	public static int sumofDigitinString(String str) {
-		
+		int sum = 0;
+			for (int i = 0; i < str.length(); i++) {
+				char check = str.charAt(i);
+				if (check >= 48 && check <= 57) {
+					sum += (check - 48);
+				}
+			}
+			
+		return sum;
 	}
 
 	/**
 	 * Implement the method below that takes a binary String <code>str</code> as
-	 * input argument and returns the length of maximum consecutive 0’s in a given
+	 * input argument and returns the length of maximum consecutive 0ï¿½s in a given
 	 * input binary string.
 	 * <p>
 	 * <strong> You can assume that the input String is not null and contains at
@@ -132,7 +147,7 @@ public class StringUtility {
 	 * </pre>
 	 * 
 	 * @param str : input binary string
-	 * @return returns the length of maximum consecutive 0’s in a given input binary
+	 * @return returns the length of maximum consecutive 0ï¿½s in a given input binary
 	 *         string.
 	 */
 	public static int lengthofMaxConsecutiveZeros(String str) {
@@ -192,7 +207,13 @@ public class StringUtility {
 	 */
 	
 	public static int whitespaceCountinString(String str) {
-		
+		int space = 0;
+		for (int i = 0; i < str.length(); i++) {
+			char check = str.charAt(i);
+			
+			if (check == 32) space ++;
+		}
+		return space;
 		
 	}
 

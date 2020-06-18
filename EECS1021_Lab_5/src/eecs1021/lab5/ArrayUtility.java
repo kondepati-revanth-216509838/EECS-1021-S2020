@@ -226,21 +226,69 @@ public class ArrayUtility {
 	public static int[] removeDuplicatesElement(int[] inputarray) {
 		// edit
 		
+		//If there's only one number, return it right away
 		if (inputarray.length == 1) {
 			return inputarray;
 		}
-	
 		
-		int trueLength = 0;
+		printarray("Initial: ", inputarray);
 		
-		for (int i = 0; i < inputarray.length - 1; i ++) {
-			if (inputarray[i] != inputarray[i + 1]) {
-				trueLength++;
+		//Sort by ascending order
+		for (int i = 0; i < inputarray.length - 1; i++) {
+			for (int j = i; j < inputarray.length - 1; j++) {
+				if (inputarray[j] > inputarray[j + 1]) {
+					int temp = inputarray[j + 1];
+					inputarray[j + 1] = inputarray[j];
+					inputarray[j] = temp;
+				}
 			}
 		}
-		System.out.println(trueLength);
-		return inputarray;
+		printarray("Sorted: ", inputarray);
+		//Check how many unique numbers are there
+		int truesize = 0;
+		for (int i = 0; i < inputarray.length; i++) {
+			if (i < inputarray.length - 1) {
+				if (inputarray[i] != inputarray[i + 1]) {
+					truesize++;
+				}
+			}
+			
+			if (i == inputarray.length - 1) {
+				if (inputarray[i - 1] != inputarray[i]) {
+					truesize++;
+				}
+			}
+		}
+		
+		//Collect them
+		int[] result = new int[truesize];
+		int index = 0;
+		for (int i = 0; i < inputarray.length; i++) {
+			if (i < inputarray.length - 1 && inputarray[i] != inputarray[i + 1]) {
+				result[index] = inputarray[i];
+				index++;
+			}
+			
+			if (i == inputarray.length - 1 && inputarray[i - 1] != inputarray[i]) {
+				result[index] = inputarray[i];
+				index++;
+			}
+		}
+		
+		printarray("Filtered: ", result);
+		System.out.println();
+	
+		return result;
 		//sorting reference link: https://stackabuse.com/sorting-algorithms-in-java/#insertionsort
+	}
+	
+	
+	static void printarray(String heading, int[] array) {
+		System.out.println(heading);
+		for (int i = 0; i < array.length; i++) {
+			System.out.print(array[i] + " ");
+		}
+		System.out.println();
 	}
 
 	/**

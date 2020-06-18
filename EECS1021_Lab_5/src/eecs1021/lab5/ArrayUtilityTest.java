@@ -192,5 +192,23 @@ public class ArrayUtilityTest {
 		
 		return true;
 	}
+	
+	@Test
+	public void test__01removeDuplicates() {
+		final int[] test = {9,2,8,8,9,9,8,8};
+		final int[] expect = {2,8,9};
+		int[] result = ArrayUtility.removeDuplicatesElement(test);
+		String str = String.format("\n Test removeDuplicateElements fail for %s. Returned (%s), but correct is (%s)", Arrays.toString(test), result,expect );
+		assertTrue(str, arrayMatch(result, expect));
+	}
+	
+	@Test
+	public void test__02removeDuplicates() {
+		final int[] test = {4,2,8,8,9,9,7,8};
+		final int[] expect = {2, 4, 7, 8, 9};
+		int[] result = ArrayUtility.removeDuplicatesElement(test);
+		String str = String.format("\n Test removeDuplicateElements fail for %s. Returned (%s), but correct is (%s)", Arrays.toString(test), result,expect );
+		assertTrue(str, arrayMatch(result, expect));
+	}
 
 }

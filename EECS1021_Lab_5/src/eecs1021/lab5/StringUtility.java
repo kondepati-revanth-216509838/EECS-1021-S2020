@@ -7,7 +7,7 @@ import java.util.Arrays;
  * Standard Library, and working with arrays and Strings.
  * 
  * 
- * This StringUtility class will help you do things with string object.  This
+ * This StringUtility class will help you do things with string object. This
  * StringUtility class contains a random assortment of methods that should
  * improve your programming skills in using Java Control Structures (selection
  * structures, repetition structures, and nested Loops), String.
@@ -18,8 +18,9 @@ import java.util.Arrays;
 public class StringUtility {
 	// ALREADY IMPLEMENTED; DO NOT MODIFY
 	private StringUtility() {
-		// ALREADY IMPLEMENTED; DO NOT MODIFY		
+		// ALREADY IMPLEMENTED; DO NOT MODIFY
 	}
+
 	/**
 	 * 
 	 * Implement the method below that takes a String <code>str</code> as input
@@ -40,7 +41,7 @@ public class StringUtility {
 	 * </pre>
 	 * 
 	 * You will need a loop, and <strong>your loop must not execute more iterations
-	 * than necessary, and you cannot use break or continue</strong>. 
+	 * than necessary, and you cannot use break or continue</strong>.
 	 * 
 	 * 
 	 * 
@@ -61,8 +62,8 @@ public class StringUtility {
 
 	/**
 	 * * Implement the method below that takes a String <code>str</code> as input
-	 * argument and returns string after removing all duplicates
-	 * characters from the input string.
+	 * argument and returns string after removing all duplicates characters from the
+	 * input string.
 	 * <p>
 	 * The order of characters in the returned string is not <strong>
 	 * important</strong>, so the strings "ECSLAB" and "CELABS" are same.
@@ -88,17 +89,16 @@ public class StringUtility {
 	 */
 
 	public static String removeDuplicatesChar(String str) {
+		// Edit
 		char[] blocks = new char[str.length()];
-		
-		for(int i = 0; i < str.length(); i++) {
+
+		for (int i = 0; i < str.length(); i++) {
 			blocks[i] = str.charAt(i);
 			System.out.print(blocks[i]);
 		}
-		
+
 		return "";
-		
-		
-		
+
 	}
 
 	/**
@@ -127,13 +127,13 @@ public class StringUtility {
 
 	public static int sumofDigitinString(String str) {
 		int sum = 0;
-			for (int i = 0; i < str.length(); i++) {
-				char check = str.charAt(i);
-				if (check >= 48 && check <= 57) {
-					sum += (check - 48);
-				}
+		for (int i = 0; i < str.length(); i++) {
+			char check = str.charAt(i);
+			if (check >= 48 && check <= 57) {
+				sum += (check - 48);
 			}
-			
+		}
+
 		return sum;
 	}
 
@@ -161,11 +161,21 @@ public class StringUtility {
 	 *         string.
 	 */
 	public static int lengthofMaxConsecutiveZeros(String str) {
-		// edit
 		int count = 0;
 		int result = 0;
-		
-		
+
+		for (int i = 0; i < str.length(); i++) {
+
+			if (str.charAt(i) == '0') {
+				count++;
+			}
+
+			if (str.charAt(i) == '1') {
+				result = Math.max(result, count);
+				count = 0;
+			}
+		}
+
 		return result;
 	}
 
@@ -190,90 +200,94 @@ public class StringUtility {
 	 * 	if str = "LabTtttEeeeSsssT" then return "LabTtEeSsT"
 	 * </pre>
 	 * 
-	 * @param str : input String 
-	 * @return string after removing all consecutive duplicates
-	 * characters from the input string.
+	 * @param str : input String
+	 * @return string after removing all consecutive duplicates characters from the
+	 *         input string.
 	 */
 	public static String removeConsecutiveDuplicates(String str) {
 		// Edit
 		String result = "";
 		for (int i = 0; i < str.length() - 1; i++) {
 			char check = str.charAt(i);
-			
+
 			if (check != str.charAt(i + 1)) {
 				result += check;
 			}
-		
+
 		}
 		return result;
 	}
 
-	
 	/**
 	 * 
-	 * Implement the method below that takes a String  <code>str</code> as
-	 *  input argument and returns number of whitespaces in the given input String. 
-	 *   whitespaces can be  spaces or  tabs.
-	 *   <p> <strong> You can assume that the input String is not null and contains at least 1 one character.</strong></p>
-	 *   <p> For example: </p>
-	 *   <pre>
+	 * Implement the method below that takes a String <code>str</code> as input
+	 * argument and returns number of whitespaces in the given input String.
+	 * whitespaces can be spaces or tabs.
+	 * <p>
+	 * <strong> You can assume that the input String is not null and contains at
+	 * least 1 one character.</strong>
+	 * </p>
+	 * <p>
+	 * For example:
+	 * </p>
+	 * 
+	 * <pre>
 	 *   if str = "I am EECS1022 Student" then return 3
 	 *   if str = "I am EECS 1022 Student" then return 4
 	 *   if str = " I am E E C S 1 0 2 2 Student" then return 11
-	 *   </pre>
-	 *   You will need a loop, and <strong>your loop must not execute more iterations 
-	 *   than necessary, and you cannot use break or continue</strong>.
-	 *   <strong>Make sure the method compiles without errors and returns the correct result when invoked.</strong>
+	 * </pre>
+	 * 
+	 * You will need a loop, and <strong>your loop must not execute more iterations
+	 * than necessary, and you cannot use break or continue</strong>. <strong>Make
+	 * sure the method compiles without errors and returns the correct result when
+	 * invoked.</strong>
 	 * 
 	 * 
-	 * @param str input string 
+	 * @param str input string
 	 * @return number of whitespaces in the given input String.
 	 */
-	
+
 	public static int whitespaceCountinString(String str) {
 		int space = 0;
 		for (int i = 0; i < str.length(); i++) {
 			char check = str.charAt(i);
-			
-			if (check == 32) space ++;
+
+			if (check == 32)
+				space++;
 		}
 		return space;
-		
+
 	}
 
-	
-	/** 
-	 * <p> Write a compressString  method that 
-	 *  compression long String {@code str} that contain many adjacent equal characters
-	 * (but no digits).  
-	 *  <p> For example: </p>
-	 *   
-	 *  <pre>
+	/**
+	 * <p>
+	 * Write a compressString method that compression long String {@code str} that
+	 * contain many adjacent equal characters (but no digits).
+	 * <p>
+	 * For example:
+	 * </p>
+	 * 
+	 * <pre>
 	 *  
 	 *  compressString("")  return "" , empty string 
 	 *  compressString("bbbcfreb$b") return  "b3c1f1r1e1b1$1b1"
 	 *  compressString("bbbrrraaaaaazzzz") return  "b3r3a6z4"
-	 *  
-	 *  </pre>
-	 *  
-	 *   	
-	 * @param inputStr :
-	 * 			string to be compressed, {@code str} is not null
-	 * @pre.  
-	 * 		Precondition: s does not contain a digit in '0'.. '9'. 
-	 * @return
-	 * 		the compressed version of long string as explained above
-	 *  	
-	 *  
+	 * 
+	 * </pre>
+	 * 
+	 * 
+	 * @param inputStr : string to be compressed, {@code str} is not null @pre.
+	 *                 Precondition: s does not contain a digit in '0'.. '9'.
+	 * @return the compressed version of long string as explained above
+	 * 
+	 * 
 	 * 
 	 *
 	 */
 
-    public static String compressString(String inputStr) {
-        String result = "";
-        return result;
-    }
+	public static String compressString(String inputStr) {
+		String result = "";
+		return result;
+	}
 
-	
-	
 }

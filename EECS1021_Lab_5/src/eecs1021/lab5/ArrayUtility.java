@@ -230,15 +230,6 @@ public class ArrayUtility {
 			return inputarray;
 		}
 	
-		for (int i = 1; i < inputarray.length; i++) {
-	        int current = inputarray[i];
-	        int j = i - 1;
-	        while(j >= 0 && current < inputarray[j]) {
-	            inputarray[j+1] = inputarray[j];
-	            j--;
-	        }
-	        inputarray[j+1] = current;
-	    }
 		
 		int trueLength = 0;
 		

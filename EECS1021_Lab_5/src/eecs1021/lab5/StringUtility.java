@@ -207,14 +207,18 @@ public class StringUtility {
 	public static String removeConsecutiveDuplicates(String str) {
 		// Edit
 		String result = "";
-		for (int i = 0; i < str.length() - 1; i++) {
-			char check = str.charAt(i);
+		for (int i = 0; i < str.length(); i++) {
 
-			if (check != str.charAt(i + 1)) {
-				result += check;
+			if (str.charAt(i) != str.charAt(i + 1) && i < str.length() - 1) {
+				result += str.charAt(i);
+			}
+			
+			if (i == str.length() - 1 && str.charAt(i) != str.charAt(i - 1)) {
+				result += str.charAt(i);
 			}
 
 		}
+		System.out.println(result);
 		return result;
 	}
 
@@ -286,6 +290,7 @@ public class StringUtility {
 	 */
 
 	public static String compressString(String inputStr) {
+		//Edit
 		String result = "";
 		return result;
 	}

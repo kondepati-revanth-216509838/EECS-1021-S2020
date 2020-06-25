@@ -2,6 +2,13 @@ package eecs1021.lab5;
 
 import java.util.Arrays;
 
+/* Methods to program:
+ *  removeDuplicatesChar -- Easy to work on (logic)
+ *  removeConsecutiveDuplicates -- algorithm trouble
+ *  compressString -- create an algorithm :)
+ * */
+
+
 /**
  * In this lab you will practice writing methods, using classes from the Java
  * Standard Library, and working with arrays and Strings.
@@ -53,9 +60,7 @@ public class StringUtility {
 		int digit = 0;
 		for (int i = 0; i < str.length(); i++) {
 			char check = str.charAt(i);
-			if (check >= 48 && check <= 57) {
-				digit++;
-			}
+			digit +=(check >= 48 && check <= 57 ? 1 : 0);
 		}
 		return digit;
 	}
@@ -93,11 +98,37 @@ public class StringUtility {
 		char[] blocks = new char[str.length()];
 
 		for (int i = 0; i < str.length(); i++) {
-			blocks[i] = str.charAt(i);
-			System.out.print(blocks[i]);
+			blocks[i] = (char)str.charAt(i);
+		
 		}
-
-		return "";
+		System.out.println("Input array: " + Arrays.toString(blocks));
+		Arrays.sort(blocks);
+		System.out.println("Sorted array: " + Arrays.toString(blocks));
+		
+		int unique = 0;
+		
+		for (int i = 0; i < blocks.length - 1; i++) {
+			if (blocks[i] != blocks[i + 1]) {
+				unique++;
+			}
+		}
+		
+		char[] result = new char[unique];
+		int index = 0;
+		for (int i = 0; i < blocks.length - 1; i++) {
+			if (blocks[i] != blocks[i + 1]) {
+				result[index] = blocks[i];
+				index++;
+			}
+		}
+		
+		String answer = "";
+		
+		for (int i = 0; i < result.length; i++) {
+			answer += result[i];
+		}
+		
+		return answer;
 
 	}
 
@@ -129,9 +160,7 @@ public class StringUtility {
 		int sum = 0;
 		for (int i = 0; i < str.length(); i++) {
 			char check = str.charAt(i);
-			if (check >= 48 && check <= 57) {
-				sum += (check - 48);
-			}
+			sum += (check >= 48 && check <= 57 ? check - 48 : 0);
 		}
 
 		return sum;
@@ -168,9 +197,7 @@ public class StringUtility {
 
 			if (str.charAt(i) == '0') {
 				count++;
-			}
-
-			if (str.charAt(i) == '1') {
+			} else if (str.charAt(i) == '1') {
 				result = Math.max(result, count);
 				count = 0;
 			}
@@ -206,19 +233,23 @@ public class StringUtility {
 	 */
 	public static String removeConsecutiveDuplicates(String str) {
 		// Edit
-		String result = "";
-		for (int i = 0; i < str.length(); i++) {
-
-			if (str.charAt(i) != str.charAt(i + 1) && i < str.length() - 1) {
-				result += str.charAt(i);
-			}
-			
-			if (i == str.length() - 1 && str.charAt(i) != str.charAt(i - 1)) {
-				result += str.charAt(i);
-			}
-
+		if (str.length() <= 1) {
+			return str;
 		}
-		System.out.println(result);
+		String result = "";
+		
+		if (str.charAt(0) != str.charAt(1)) {
+			String character = str.substring(0,1);
+			result = result.concat(character);
+		}
+		
+		for (int i = 1; i < str.length(); i++) {
+			if (str.charAt(i) != str.charAt(i - 1)) {
+				String character = str.substring(i, i + 1);
+				result = result.concat(character);
+			}
+		}
+		System.out.println("Result : " + result);
 		return result;
 	}
 
@@ -255,9 +286,7 @@ public class StringUtility {
 		int space = 0;
 		for (int i = 0; i < str.length(); i++) {
 			char check = str.charAt(i);
-
-			if (check == 32)
-				space++;
+			space += (check == 32 ? 1 : 0);
 		}
 		return space;
 
@@ -292,6 +321,17 @@ public class StringUtility {
 	public static String compressString(String inputStr) {
 		//Edit
 		String result = "";
+		for (int i = 0; i < inputStr.length() - 1; i++) {
+			if(inputStr.charAt(i) == inputStr.charAt(i + 1)) {
+				String piece = "";
+				for (int j = i; inputStr.charAt(i) != inputStr.charAt(j); j++) {
+					piece = inputStr.substring(i, j);
+				}
+				result += piece + piece.length();
+				System.out.print(piece + " ");
+			}
+		}
+		System.out.println();
 		return result;
 	}
 

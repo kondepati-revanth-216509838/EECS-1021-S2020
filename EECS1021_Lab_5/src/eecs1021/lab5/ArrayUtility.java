@@ -152,7 +152,7 @@ public class ArrayUtility {
 
 		}
 
-		int[] result = { min, max };
+		int[] result = {min, max};
 
 		return result;
 	}
@@ -190,10 +190,7 @@ public class ArrayUtility {
 				sum += (double) inputarray[i];
 			}
 		}
-		if (count == 0) {
-			return 0;
-		}
-		return sum / (double) count;
+		return (count == 0 ? 0 :sum / (double) count);
 	}
 
 	/**
@@ -225,72 +222,50 @@ public class ArrayUtility {
 
 	public static int[] removeDuplicatesElement(int[] inputarray) {
 		// edit
-		
+		int n = inputarray.length;
 		//If there's only one number, return it right away
-		if (inputarray.length == 1) {
+		if (n <= 1) {
 			return inputarray;
 		}
 		
-		printarray("Initial: ", inputarray);
+		Arrays.sort(inputarray);
+		System.out.println("Array: " + Arrays.toString(inputarray));
 		
-		//Sort by ascending order
-		for (int i = 0; i < inputarray.length - 1; i++) {
-			for (int j = i; j < inputarray.length - 1; j++) {
-				if (inputarray[j] > inputarray[j + 1]) {
-					int temp = inputarray[j + 1];
-					inputarray[j + 1] = inputarray[j];
-					inputarray[j] = temp;
-				}
-			}
+		int unique = 0;
+		
+		unique += (inputarray[0] != inputarray[1] ? 1 : 0);
+		
+		for (int i = 1; i < n; i++) {
+			unique += (inputarray[i - 1] != inputarray[i] ? 1 : 0);
 		}
-		printarray("Sorted: ", inputarray);
-		//Check how many unique numbers are there
-		int truesize = 0;
-		for (int i = 0; i < inputarray.length; i++) {
-			if (i < inputarray.length - 1) {
-				if (inputarray[i] != inputarray[i + 1]) {
-					truesize++;
-				}
-			}
 			
-			if (i == inputarray.length - 1) {
-				if (inputarray[i - 1] != inputarray[i]) {
-					truesize++;
-				}
+		System.out.println("Unique Numbers: " + unique);
+		
+		int[] result = new int[unique];
+		
+		result[0] = (inputarray[0] != inputarray[1] ? inputarray[0]: 0);
+		int index = 1;
+		for(int i = 1; i < n; i++) {
+			if (inputarray[i - 1] != inputarray[i]) {
+				result[index++] = inputarray[i];
 			}
 		}
 		
-		//Collect them
-		int[] result = new int[truesize];
-		int index = 0;
-		for (int i = 0; i < inputarray.length; i++) {
-			if (i < inputarray.length - 1 && inputarray[i] != inputarray[i + 1]) {
-				result[index] = inputarray[i];
-				index++;
-			}
-			
-			if (i == inputarray.length - 1 && inputarray[i - 1] != inputarray[i]) {
-				result[index] = inputarray[i];
-				index++;
-			}
-		}
+		System.out.println("Result Array: " + Arrays.toString(result));
 		
-		printarray("Filtered: ", result);
-		System.out.println();
+		/* Steps:
+		 * Sort -- Done
+		 * Find unique numbers -- Trying
+		 * Create an array for the unique numbers 
+		 * Pack them
+		 * return that array
+		 * */
 	
 		return result;
-		//sorting reference link: https://stackabuse.com/sorting-algorithms-in-java/#insertionsort
 	}
 	
 	
-	static void printarray(String heading, int[] array) {
-		System.out.println(heading);
-		for (int i = 0; i < array.length; i++) {
-			System.out.print(array[i] + " ");
-		}
-		System.out.println();
-	}
-
+	
 	/**
 	 * 
 	 * Implement the method below that takes an array of <code>int</code> numbers as
@@ -324,7 +299,6 @@ public class ArrayUtility {
 
 		if (inputarray.length > 2) {
 			int[] diff = new int[inputarray.length - 1];
-
 			for (int i = 0; i < diff.length; i++) {
 				diff[i] = inputarray[i + 1] - inputarray[i];
 			}
@@ -335,7 +309,6 @@ public class ArrayUtility {
 				}
 			}
 			return true;
-
 		}
 
 		return false;

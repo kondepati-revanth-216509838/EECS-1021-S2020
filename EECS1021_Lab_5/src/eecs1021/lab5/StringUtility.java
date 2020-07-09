@@ -232,7 +232,6 @@ public class StringUtility {
 	 *         input string.
 	 */
 	public static String removeConsecutiveDuplicates(String str) {
-		// Edit
 		if (str.length() <= 1) {
 			return str;
 		}

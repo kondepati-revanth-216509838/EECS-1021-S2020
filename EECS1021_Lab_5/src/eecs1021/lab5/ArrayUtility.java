@@ -21,27 +21,6 @@ public class ArrayUtility {
 		// ALREADY IMPLEMENTED; DO NOT MODIFY
 	}
 
-	/**
-	 * 
-	 * 
-	 * Implement the method below which takes an array of <code>int</code> numbers
-	 * as input argument and returns the number of even numbers in the array
-	 * argument. <strong>Your code should use a for loop.</strong>
-	 * <p>
-	 * For example:
-	 * </p>
-	 * 
-	 * <pre>
-	 * if array1 = {9, 10, 3, 4, 3} then 	return 2
-	 * if array1 = { 1, 6, 1}  then  return 1
-	 * if array1 = { 4, 24, 46, 0} then  return 4
-	 * if array1 = { 15, 9, 45, 57}  then  return 0
-	 * </pre>
-	 * 
-	 * 
-	 * @param inputarray : int input array
-	 * @return returns the number of even numbers in the array argument.
-	 */
 
 	public static int numberOfEvens(int[] inputarray) {
 		int count = 0;
@@ -53,23 +32,6 @@ public class ArrayUtility {
 		return count;
 	}
 
-	/**
-	 * Given class <strong><code>Rectangle</code></strong> defined in same package
-	 * <code>eecs1021.lab5</code>
-	 * 
-	 * <p>
-	 * Implement the method below which takes an array of <code>Rectangle</code>
-	 * objects as input argument and returns the average area of these rectangle
-	 * objects.
-	 * </p>
-	 * <p>
-	 * <strong> You can assume that the input array is not null and contains at
-	 * least 1 one rectangle object.</strong>
-	 * </p>
-	 * 
-	 * @param inputarray Array of Rectangle object
-	 * @return the average area of these rectangle objects.
-	 */
 
 	public static double avgAreaofRectangeles(Rectangle[] inputarray) {
 		int sumArea = 0;
@@ -82,28 +44,6 @@ public class ArrayUtility {
 		return average;
 	}
 
-	/**
-	 * 
-	 * Implement the method below which takes a 2D array of <code>int</code> numbers
-	 * as input argument and returns the average of its elements.
-	 * <p>
-	 * <strong> You can assume that the input array is not null and contains at
-	 * least 1 one element.</strong>
-	 * </p>
-	 * <p>
-	 * For example:
-	 * </p>
-	 * 
-	 * <pre>
-	 * 	if inputarray = {{9, 2, 3, 4}, {1, 2, 3, 45}, {1, 222, 333, -4}} then return 51.75
-	 * 	if inputarray = {{1, 4}, {12, 42}} then return 14.75
-	 * 	if inputarray = {{20}, {4, 2, 12}} then return 9.5
-	 * 	if inputarray = {{81, 28, 4}, {2, 33, -42}, {1, -22,-4}} then return 9.0
-	 * </pre>
-	 * 
-	 * @param inputarray 2D input array of integers
-	 * @return the average of its elements.
-	 */
 
 	public static double average2D(int[][] inputarray) {
 		int sum = 0, count = 0;
@@ -115,29 +55,6 @@ public class ArrayUtility {
 		}
 		return (double) sum / (double) count;
 	}
-
-	/**
-	 * Implement the method below which takes a 2D array of <code>int</code> numbers
-	 * as input argument then finds out its maximum and minimum values, and return
-	 * sorted array contains the minimum and maximum values, respectively.
-	 * <p>
-	 * <strong> You can assume that the input array is not null and contains at
-	 * least two elements.</strong>
-	 * </p>
-	 * <p>
-	 * For example:
-	 * </p>
-	 * 
-	 * <pre>
-	 * 	if inputarray = {{9, 2, 3, 4}, {1, 2, 3, 45}, {1, 222, 333, -4}} then return [-4, 333]
-	 * 	if inputarray = {{1, 4}, {12, 42}} then return [1, 42]
-	 * 	if inputarray = {{20}, {4, 2, 12}} then return [2, 20]
-	 * 	if inputarray = {{81, 28, 4}, {2, 33, -42}, {1, -22,-4}} then return [-42, 81]
-	 * </pre>
-	 * 
-	 * @param inputarray 2D input array of integers
-	 * @return sorted array contains the minimum and maximum values, respectively.
-	 */
 
 	public static int[] minmax2D(int[][] inputarray) {
 		int max = Integer.MIN_VALUE;
@@ -152,35 +69,12 @@ public class ArrayUtility {
 
 		}
 
-		int[] result = {min, max};
+		int[] result = { min, max };
 
 		return result;
 	}
 
-	/**
-	 * 
-	 * This averageOfOdd method received an array of integers, then calculate the
-	 * average of the odd elements of this array.
-	 * <p>
-	 * <strong> You can assume that the array is not empty and contains at least 1
-	 * one element.</strong>
-	 * </p>
-	 * <p>
-	 * For example:
-	 * </p>
-	 * 
-	 * <pre>
-	 *		if inputarray = {3, 6}   then 	return 3.0
-	 *		if inputarray = { 1, 1, 1}   then 	return 1.0
-	 *		if inputarray = { 2, 4, 6, 3}  then  	return 3.0
-	 *		if inputarray = { 11, 25, 12, 50}  then  	return 18.0
-	 * </pre>
-	 * 
-	 * 
-	 * @param inputarray the input array of integers
-	 * @return the average of the ODD elements of the input array of integers, the
-	 *         average of type double
-	 */
+
 	public static double averageOfOdd(int[] inputarray) {
 		int count = 0;
 		double sum = 0.0;
@@ -190,7 +84,7 @@ public class ArrayUtility {
 				sum += (double) inputarray[i];
 			}
 		}
-		return (count == 0 ? 0 :sum / (double) count);
+		return (count == 0 ? 0 : sum / (double) count);
 	}
 
 	/**
@@ -221,80 +115,40 @@ public class ArrayUtility {
 	 */
 
 	public static int[] removeDuplicatesElement(int[] inputarray) {
-		// edit
-		int n = inputarray.length;
-		//If there's only one number, return it right away
-		if (n <= 1) {
+		if (inputarray.length <= 1) {
 			return inputarray;
 		}
-		
+
 		Arrays.sort(inputarray);
-		System.out.println("Array: " + Arrays.toString(inputarray));
-		
+
 		int unique = 0;
-		
+
 		unique += (inputarray[0] != inputarray[1] ? 1 : 0);
-		
-		for (int i = 1; i < n; i++) {
+
+		for (int i = 1; i < inputarray.length; i++) {
 			unique += (inputarray[i - 1] != inputarray[i] ? 1 : 0);
 		}
-			
-		System.out.println("Unique Numbers: " + unique);
-		
+
 		int[] result = new int[unique];
-		
-		result[0] = (inputarray[0] != inputarray[1] ? inputarray[0]: 0);
+
 		int index = 1;
-		for(int i = 1; i < n; i++) {
+		
+		if (inputarray[0] != inputarray[1]) {
+			result[0] = inputarray[0];
+		} else {
+			index--;
+		}
+		
+		for (int i = 1; i < inputarray.length; i++) {
 			if (inputarray[i - 1] != inputarray[i]) {
 				result[index++] = inputarray[i];
 			}
 		}
-		
-		System.out.println("Result Array: " + Arrays.toString(result));
-		
-		/* Steps:
-		 * Sort -- Done
-		 * Find unique numbers -- Trying
-		 * Create an array for the unique numbers 
-		 * Pack them
-		 * return that array
-		 * */
-	
+
 		return result;
 	}
-	
-	
-	
-	/**
-	 * 
-	 * Implement the method below that takes an array of <code>int</code> numbers as
-	 * input argument and returns true if all elements belonging to this input array
-	 * are in a sequence of increasing consecutive integers and returns false
-	 * otherwise. Consecutive integers are integers that come one after the other,
-	 * as in 5, 6, 7, 8, 9, etc.
-	 * <p>
-	 * <strong> You can assume that the input array is not empty and contains at
-	 * least 1 one element.</strong>
-	 * </p>
-	 * <p>
-	 * For example:
-	 * </p>
-	 * 
-	 * <pre>
-	 * if inputarray = {6, 7, 8, 9} then return true
-	 * if inputarray = { 6, 7, 8, 9, 2, 9} then return false
-	 * if inputarray = { 1, 1, 1, 1}  then return false
-	 * if inputarray = { 2, 3, 4, 5} then return true
-	 * </pre>
-	 * 
-	 * 
-	 * 
-	 * @param inputarray input array of integer
-	 * @return true if all elements belonging to this input array are in a sequence
-	 *         of increasing consecutive integers and returns false otherwise.
-	 */
 
+	
 	public static boolean isConsecutive(int[] inputarray) {
 
 		if (inputarray.length > 2) {

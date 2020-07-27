@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"eecs1021.lab8","l":"Chair"},{"p":"eecs1021.lab8","l":"ComputerChair"},{"p":"eecs1021.lab8","l":"ConferenceChair"}]

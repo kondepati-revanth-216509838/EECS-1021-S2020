@@ -46,7 +46,7 @@ public class Company {
 	 */
 	
 	public HashMap<Integer, Department> getDepartments() {
-		return this.departments;
+		return departments;
 	}
 
 
@@ -58,7 +58,7 @@ public class Company {
 	 * @return   a reference to the Map of all the employees working for this company
 	 */
 	public HashMap<String, Employee> getEmployees() {
-		return this.employees;
+		return employees;
 	}
 
 
@@ -76,7 +76,15 @@ public class Company {
 	 * @throws IllegalArgumentException if 'employeeID' is an existing employee id
 	 */
 	public void addEmployee(String employeeID, Employee info)  {
-		
+		try {
+			if (employees.get(employeeID) == null) {
+				throw new IllegalArgumentException("This employee is in the database.");
+			} else {
+				employees.put(employeeID, info);
+			}
+		} catch (Exception e) {
+			
+		}
 	}
 	
 	
@@ -87,7 +95,15 @@ public class Company {
 	 * @throws IllegalArgumentException if 'employeeID' is not an existing employee id
 	 */
 	public void removeEmployee(String employeeID)  {
-		
+		try {
+			if (employees.get(employeeID) == null) {
+				throw new IllegalArgumentException();
+			} else {
+				employees.remove(employeeID);
+			}
+		} catch (Exception e){
+			throw new IllegalArgumentException();
+		}
 	}
 	
 	
@@ -100,7 +116,15 @@ public class Company {
 	 * @throws IllegalArgumentException if 'departmentID' is an existing department id
 	 */
 	public void addDepartment(Integer departmentID, Department info)  {
-		
+		try {
+			if (departments.get(departmentID) == null) {
+				throw new IllegalArgumentException();
+			} else {
+				departments.put(departmentID, info);
+			}
+		} catch (Exception e) {
+			throw new IllegalArgumentException();
+		}
 	}
 	
 	
@@ -111,7 +135,15 @@ public class Company {
 	 * @throws IllegalArgumentException if 'departmentID' is not an existing department id
 	 */
 	public void removeDepartment(Integer departmentID)  {
-		
+		try {
+			if (departments.get(departmentID) == null) {
+				throw new IllegalArgumentException();
+			} else {
+				departments.remove(departmentID);
+			}
+		} catch (Exception e) {
+			throw new IllegalArgumentException();
+		}
 	}
 	
 	
@@ -132,7 +164,15 @@ public class Company {
 	 * or newDepartmentID is a non-existing department id in this company.
 	 */
 	public void changeEmployeeDepartment(String employeeID, Integer newDepartmentID)  {
-		
+		try {
+			if (employees.get(employeeID) != null) {
+				employees.get(employeeID).setDepartmentId(newDepartmentID);
+			} else {
+				throw new IllegalArgumentException();
+			}
+		} catch (Exception e) {
+			throw new IllegalArgumentException();
+		}
 	}
 	
 	
@@ -147,7 +187,7 @@ public class Company {
 	 * @throws IllegalArgumentException if 'employeeID' is not an existing employee id in this company
 	 */
 	public String getEmployeeName(String employeeID)  {
-		
+		return employees.get(employeeID).getName();
 	}
 	
 	
@@ -164,7 +204,14 @@ public class Company {
 	 * employed (linked )  by a department has id 'departmentID'
 	 */
 	public ArrayList<String> getEmployeeNames(Integer departmentID) {
+		ArrayList<String> names = new ArrayList<>();
+		for (int i = 0; i < employees.size(); i++) {
+			if (employees.get(i).getDepartmentId() == departmentID) {
+				names.add(employees.get(i).getName());
+			}
+		}
 		
+		return names;
 	}
 	
 	
@@ -179,7 +226,8 @@ public class Company {
 	 * @throws IllegalArgumentException if 'employeeID' is not an existing employee id in this company
 	 */
 	public Department getDepartmentInfo(String employeeID)  {
-		
+		int index = employees.get(employeeID).getDepartmentId();
+		return departments.get(index);
 	}
 	
 	
@@ -195,7 +243,16 @@ public class Company {
 	 * @throws IllegalArgumentException  if departmentID is not an existing department id in this company
 	 */
 	public double getAverageSalary(Integer departmentID)  {
-		
+		if (departments.containsKey(departmentID)) throw new IllegalArgumentException();
+		double total = 0;
+		int count = 0;
+		for (int i = 0; i < employees.size(); i++) {
+			if (employees.get(i).getDepartmentId() == departmentID) {
+				total += employees.get(i).getSalary();
+				count ++;
+			}
+		}
+		return (total / (double) count);
 	}
 
 
@@ -217,7 +274,18 @@ public class Company {
 	 * Hint: Use 'getAverageSalary(Integer departmentID)' as a helper method.
 	 */
 	public Department getDepartmentOfHighestAverageSalary() {	
-		 
+		ArrayList<Integer> avgSalaries = new ArrayList<>();
+		double total = Double.MIN_VALUE;
+		int max = 0;
+		for (int i = 0; i < departments.size(); i++) {
+			if (total < getAverageSalary(i)) {
+				max = i;
+			}
+			total = Math.max(getAverageSalary(i), total);
+		}
+		return departments.get(max);
+		
+		
 	}
 	
 	

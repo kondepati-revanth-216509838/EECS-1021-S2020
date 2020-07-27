@@ -139,7 +139,6 @@ public class StringUtilityTest {
 		String result = StringUtility.compressString(inputStr);
 		String error = String.format("error on compressString, expected  %s , but returned %s", expected, result);
 		assertTrue(error, expected.equals(result));
-				
 	}
 	
 	@Test

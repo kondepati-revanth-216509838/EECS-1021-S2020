@@ -68,11 +68,9 @@ public class ConferenceChair extends Chair {
 	public ConferenceChair() {
 
 		// COMPLETE THIS
-		this.numberofWheels = 4;
-		this.chairCategory = "Basic";
-		this.setChairColor("Black");
-		this.setChairManufCost(15.0);
-		this.setChairShape("Square");
+		
+		
+
 	}
 
 	/**
@@ -129,7 +127,7 @@ public class ConferenceChair extends Chair {
 	 */
 	public ConferenceChair(double chairManufCost, String chairShape, String chairColor, String chairCategory,
 			int numberofWheels) {
-		
+
 		// COMPLETE THIS
 		
 	}
@@ -310,44 +308,100 @@ public class ConferenceChair extends Chair {
 	public double getChairPrice() {
 
 		// COMPLETE THIS
-		HashMap<String, Double> price = new HashMap<>();
-		price.put("Basic".toUpperCase(), 55.0); price.put("Normal".toUpperCase(), 75.0); price.put("Delux".toUpperCase(), 90.0);
-		
-		price.put("WHITE", 0.0); price.put("BLACK", 5.0); price.put("BLUE", 10.0);
-		price.put("BROWN", 20.0); price.put("GREEN", 25.0); price.put("PINK", 35.0);
-		
-		
-		return this.getChairManufCost() + price.get(getChairCategory().toUpperCase()) + price.get(getChairColor().toUpperCase());
+
 		
 	}
+
+	/**
+	 * 
+	 * 
+	 * 
+	 * This method compute the delivery cost for this Conference chair object given
+	 * the city of delivery as input argument
+	 * 
+	 * <p>
+	 * The Conference chair can be sent out for delivery to three different cities.
+	 * The cities are <strong>Edmonton, Winnipeg</strong> and
+	 * <strong>Halifax</strong>.
+	 * </p>
+	 * <p>
+	 * The cost of delivery can be computed using these rules:
+	 * </p>
+	 * 
+	 * <p>
+	 * If the delivery city is <strong> Edmonton </strong> then the delivery cost is
+	 * equal to <strong><code> (the Conference chair price )+ (55$)</code>
+	 * </strong>.
+	 * </p>
+	 * 
+	 * <p>
+	 * If the delivery city is <strong> Winnipeg </strong>then the delivery cost is
+	 * equal to <strong><code> (the Conference chair price )+ (65$)</code>
+	 * </strong>.
+	 * </p>
+	 * 
+	 * <p>
+	 * If the delivery city is <strong> Halifax </strong> then the delivery cost is
+	 * equal to <strong><code> (the Conference chair price )+ (85$)</code>
+	 * </strong>.
+	 * </p>
+	 * 
+	 * 
+	 * @param nameofCity name of delivery city
+	 * 
+	 * @return The delivery cost for the given delivery city
+	 * 
+	 * 		@pre.
+	 *         <p>
+	 *         <strong> Precondition </strong>
+	 *         </p>
+	 *         <p>
+	 *         The given delivery city (input city) should be one of the following
+	 *         cities <strong> Edmonton, Winnipeg</strong> and
+	 *         <strong>Halifax</strong>.
+	 *         </p>
+	 * 
+	 * @throws IllegalArgumentException
+	 *                                  <p>
+	 *                                  If the given delivery city (input city) was
+	 *                                  not one of the following cities <strong>
+	 *                                  Edmonton, Winnipeg</strong> and
+	 *                                  <strong>Halifax</strong>.
+	 *                                  </p>
+	 */
 
 	public double getDeliveryCost(String nameofCity) {
 
 		// COMPLETE THIS
 
-		HashMap<String, Integer> deliveryCost = new HashMap<>();
-		deliveryCost.put("Edmonton", 55); deliveryCost.put("Winnipeg", 65); deliveryCost.put("Halifax", 85);
 		
-		if (!deliveryCost.containsKey(nameofCity)) throw new IllegalArgumentException("Invalid city");
-		
-		return this.getChairPrice() + deliveryCost.get(nameofCity);
-		
+
 	}
 
+	/**
+	 * Get the Conference chair category The returned string contains all capital
+	 * letter
+	 * 
+	 * @return the Conference chair category
+	 */
 	public String getChairCategory() {
 		// COMPLETE THIS
-		return this.chairCategory.toUpperCase();
+	
 	}
 
-
+	/**
+	 * get the number of wheels of this Conference chair
+	 * 
+	 * @return the number of wheels of this Conference chair
+	 */
 	public int getNumberofWheels() {
 		// COMPLETE THIS
-		return this.numberofWheels;
+		
 	}
 
 	/**
 	 * Get the string representation of the Conference chair. The string is (chair
-	 * Shape, chair color, chair initial cost , chair category, number of wheels).
+	 * Shape, chair shape, chair initial cost , chair category, number of wheels).
 	 * 
 	 * The return string contains only capital letters
 	 * 
@@ -368,7 +422,7 @@ public class ConferenceChair extends Chair {
 	@Override
 	public String toString() {
 		// COMPLETE THIS
-		return "(" + this.getChairShape().toUpperCase() + ", " + this.getChairColor().toUpperCase() +", " + this.getChairCategory().toUpperCase() + ", " + this.getChairManufCost() +", " + this.numberofWheels + ")";
+		
 	}
 
 }

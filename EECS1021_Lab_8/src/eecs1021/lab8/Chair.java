@@ -2,6 +2,20 @@ package eecs1021.lab8;
 
 import java.util.*;
 
+/**
+ * 
+ * A class for simple chair. The Chair is a Furniture item that has some fields
+ * (attributes). <strong>This class store the color, manufacturing cost and
+ * shape of a chair </strong>.
+ * 
+ * 
+ * <p>
+ * <strong> NOTE: In this class, all string comparisons are carried out with
+ * case insensitive </strong>
+ * </p>
+ *
+ */
+
 public class Chair {
 	/**
 	 * The total number of Chairs created ( or manufactured) using the Chair Class
@@ -13,7 +27,7 @@ public class Chair {
 	 */
 
 	// COMPLETE THIS
-
+	protected static int numChairs = 0;
 	/**
 	 * The Id of chair object
 	 * 
@@ -74,7 +88,9 @@ public class Chair {
 		// COMPLETE THIS
 		this.chairColor = "WHITE";
 		this.chairShape = "RECTANGLE";
-		this.chairManufCost = 0.0;
+		this.chairManufCost = 0;
+		this.id = new Integer(numChairs);
+		numChairs++;
 
 	}
 
@@ -146,27 +162,31 @@ public class Chair {
 	public Chair(double chairManufCost, String chairShape, String chairColor) {
 
 		// COMPLETE THIS
+		List<String> choice = new ArrayList<>();
+		choice.add("WHITE");
+		choice.add("BLACK");
+
+		choice.add("RECTANGLE");
+		choice.add("SQUARE");
+
 		try {
+			if (!choice.contains(chairColor.toUpperCase())) {
+				throw new IllegalArgumentException();
+			}
+
+			if (!choice.contains(chairShape.toUpperCase())) {
+				throw new IllegalArgumentException();
+			}
+
 			if (chairManufCost < 0.0) {
-				throw new IllegalArgumentException("Invalid manufacturing cost.");
+				throw new IllegalArgumentException();
 			}
 
-			boolean checkShape = chairShape.toUpperCase().equals("SQUARE")
-					|| chairShape.toUpperCase().equals("RECTANGLE");
-			if (checkShape) {
-				throw new IllegalArgumentException("Invalid chair shape.");
-			}
-
-			boolean checkColor = chairColor.toUpperCase().equals("BLACK") || chairShape.toUpperCase().equals("WHITE");
-			if (checkColor) {
-				throw new IllegalArgumentException("Invalid chair color.");
-			}
-
-			this.chairColor = chairColor;
+			this.chairColor = chairColor.toUpperCase();
+			this.chairShape = chairShape.toUpperCase();
 			this.chairManufCost = chairManufCost;
-			this.chairShape = chairShape;
-			this.id = 0;
-
+			this.id = new Integer(numChairs);
+			numChairs++;
 		} catch (IllegalArgumentException e) {
 			throw new IllegalArgumentException();
 		}
@@ -182,7 +202,6 @@ public class Chair {
 
 		// COMPLETE THIS
 		return numChairs;
-
 	}
 
 	/**
@@ -194,7 +213,7 @@ public class Chair {
 	public static void decrementNumberofChairCreated() {
 
 		// COMPLETE THIS
-
+		numChairs--;
 	}
 
 	/**
@@ -205,7 +224,6 @@ public class Chair {
 	public final int getId() {
 		// COMPLETE THIS
 		return this.id;
-
 	}
 
 	/**
@@ -216,23 +234,7 @@ public class Chair {
 	 * 
 	 */
 	protected void setChairColor(String chairColor) {
-
-		// COMPLETE THIS
-		ArrayList<String> colorChoice = new ArrayList<>();
-		colorChoice.add("WHITE");
-		colorChoice.add("BLACK");
-
-		try {
-			if (colorChoice.contains(chairColor.toUpperCase())) {
-				this.chairColor = chairColor;
-			} else {
-				throw new IllegalArgumentException();
-			}
-		} catch (IllegalArgumentException e) {
-			throw new IllegalArgumentException();
-		}
 		this.chairColor = chairColor;
-
 	}
 
 	/**
@@ -243,22 +245,7 @@ public class Chair {
 	 * 
 	 */
 	protected void setChairShape(String chairShape) {
-
-		// COMPLETE THIS
-		List<String> shapeChoice = new ArrayList<>();
-		shapeChoice.add("RECTANGLE");
-		shapeChoice.add("SQUARE");
-		try {
-			if (shapeChoice.contains(chairShape.toUpperCase())) {
-				this.chairShape = chairShape;
-			} else {
-				throw new IllegalArgumentException();
-			}
-		} catch (IllegalArgumentException e) {
-			throw new IllegalArgumentException();
-		}
 		this.chairShape = chairShape;
-
 	}
 
 	/**
@@ -274,19 +261,14 @@ public class Chair {
 	 * 
 	 */
 	protected void setChairManufCost(double chairManufCost) {
-
-		// COMPLETE THIS
-
 		try {
 			if (chairManufCost < 0.0) {
-				throw new IllegalArgumentException();
-			} else {
-				this.chairManufCost = chairManufCost;
+				throw new IllegalArgumentException("Invalid cost");
 			}
-		} catch (Exception e) {
-			throw new IllegalArgumentException();
+			this.chairManufCost = chairManufCost;
+		} catch (IllegalArgumentException e) {
+			throw e;
 		}
-
 	}
 
 	/**
@@ -311,12 +293,26 @@ public class Chair {
 	 */
 	private void set(String chairColor, String chairShape) {
 
-		// COMPLETE THIS
+		List<String> choice = new ArrayList<>();
+		choice.add("RECTANGLE");
+		choice.add("SQUARE");
+		choice.add("WHITE");
+		choice.add("BLACK");
 
 		try {
 
-		} catch (Exception e) {
-			throw new IllegalArgumentException();
+			if (!choice.contains(chairColor.toUpperCase())) {
+				throw new IllegalArgumentException();
+			}
+
+			if (!choice.contains(chairShape.toUpperCase())) {
+				throw new IllegalArgumentException();
+			}
+
+			this.setChairColor(chairColor);
+			this.setChairShape(chairShape);
+		} catch (IllegalArgumentException e) {
+			throw e;
 		}
 
 	}
@@ -335,13 +331,17 @@ public class Chair {
 	 */
 
 	private void checkChairShape(String chairShape) {
-		// COMPLETE THIS
+		List<String> s = new ArrayList<>();
+		s.add("BLACK");
+		s.add("WHITE");
+
 		try {
-
-		} catch (Exception e) {
-
+			if (!s.contains(chairShape.toUpperCase())) {
+				throw new IllegalArgumentException();
+			}
+		} catch (IllegalArgumentException e) {
+			throw e;
 		}
-
 	}
 
 	/**
@@ -358,14 +358,17 @@ public class Chair {
 	 */
 
 	private void checkChairColor(String chairColor) {
+		List<String> c = new ArrayList<>();
+		c.add("RECTANGLE");
+		c.add("SQUAREE");
 
-		// COMPLETE THIS
 		try {
-
-		} catch (Exception e) {
-
+			if (!c.contains(chairColor.toUpperCase())) {
+				throw new IllegalArgumentException();
+			}
+		} catch (IllegalArgumentException e) {
+			throw e;
 		}
-
 	}
 
 	/**
@@ -417,8 +420,7 @@ public class Chair {
 	 * @return the string representation of the chair
 	 */
 	public String toString() {
-		// COMPLETE THIS
-		return chairShape.toUpperCase() + ", " + chairColor.toUpperCase() + ", " + chairManufCost;
+		return this.chairShape + ", " + this.chairColor + ", " + this.chairManufCost;
 	}
 
 }

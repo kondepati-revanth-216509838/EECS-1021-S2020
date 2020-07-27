@@ -64,11 +64,10 @@ public class ComputerChair extends Chair {
 	 * 
 	 */
 	public ComputerChair() {
-		numberofWheels = 5;
-		chairCategory = "Basic";
-		this.setChairColor("Black");
-		this.setChairManufCost(0.0);
-		this.setChairShape("Square");
+
+		// COMPLETE THIS
+		this.numberofWheels = 5;
+		this.chairCategory = "BASIC";
 	}
 
 	/**
@@ -123,11 +122,45 @@ public class ComputerChair extends Chair {
 			int numberofWheels) {
 
 		// COMPLETE THIS
-		this.numberofWheels = numberofWheels;
-		this.chairCategory = chairCategory;
-		this.setChairColor(chairColor);
-		this.setChairManufCost(chairManufCost);
-		this.setChairShape(chairShape);
+		List<Integer> wheels = new ArrayList<>();
+		wheels.add(3);
+		wheels.add(5);
+		wheels.add(7);
+
+		List<String> info = new ArrayList<>();
+		info.add("BASIC");
+		info.add("NORMAL");
+		info.add("SUPER");
+
+		info.add("BLACK");
+		info.add("WHITE");
+		info.add("ORANGE");
+		info.add("BROWN");
+		info.add("RED");
+		info.add("GRAY");
+
+		try {
+			if (chairManufCost < 0.0) {
+				throw new IllegalArgumentException("Invalid cost.");
+			}
+
+			if (!info.contains(chairColor.toUpperCase())) {
+				throw new IllegalArgumentException("Invalid color choice");
+			}
+
+			if (!info.contains(chairCategory.toUpperCase())) {
+				throw new IllegalArgumentException("Invalid category");
+			}
+
+			this.setChairManufCost(chairManufCost);
+			this.chairCategory = chairCategory.toUpperCase();
+			this.numberofWheels = numberofWheels;
+			this.setChairColor(chairColor.toUpperCase());
+			this.setChairShape(chairShape.toUpperCase());
+
+		} catch (IllegalArgumentException e) {
+			throw e;
+		}
 
 	}
 
@@ -146,9 +179,18 @@ public class ComputerChair extends Chair {
 
 	private void checkChairShape(String chairShape) {
 		// COMPLETE THIS
-		
-		boolean checkShape = ()
+		List<String> shapes = new ArrayList<>();
+		shapes.add("RECTANGLE");
+		shapes.add("SQUARE");
+		shapes.add("ROUND");
 
+		try {
+			if (!shapes.contains(chairShape.toUpperCase())) {
+				throw new IllegalArgumentException("Invalid shape choice");
+			}
+		} catch (IllegalArgumentException e) {
+			throw e;
+		}
 	}
 
 	/**
@@ -165,19 +207,26 @@ public class ComputerChair extends Chair {
 	 */
 
 	private void checkChairColor(String chairColor) {
-		String[] checkerBox = { "Black", "White", "Orange", "Red", "Brown", "Gray" };
+
 		// COMPLETE THIS
+		List<String> color = new ArrayList<>();
+		color.add("BLACK");
+		color.add("WHITE");
+		color.add("ORANGE");
+		color.add("BROWN");
+		color.add("RED");
+		color.add("GRAY");
+
 		try {
-			boolean checkColor = false;
-			for (int i = 0; i < checkerBox.length || checkColor; i++) {
-				checkColor = (checkerBox[i].equals(chairColor) || checkColor ? true : false);
-			}
-			if (checkColor == false) {
+			if (!color.contains(chairColor.toUpperCase())) {
 				throw new IllegalArgumentException("Invalid color choice");
 			}
+
+			this.setChairColor(chairColor);
 		} catch (IllegalArgumentException e) {
-			throw new IllegalArgumentException("Invalid color choice");
+			throw e;
 		}
+
 	}
 
 	/**
@@ -231,14 +280,22 @@ public class ComputerChair extends Chair {
 	public double getChairPrice() {
 
 		// COMPLETE THIS
-		HashMap<String, Integer> category = new HashMap<>();
-		HashMap<String, Integer> colors = new HashMap<>();
-		
-		category.put("Basic", 85); category.put("Normal", 95); category.put("Super", 100);
-		
-		colors.put("white", 0); colors.put("black", 15); colors.put("red", 25); colors.put("orange", colors.get("red")); colors.put("brown", 30); colors.put("gray", colors.get("brown"));
-	
-		return this.getChairManufCost() + category.get(this.chairCategory) + colors.get(this.getChairColor());
+		HashMap<String, Integer> price = new HashMap<>();
+
+		price.put("BASIC", 85);
+		price.put("NORMAL", 95);
+		price.put("SUPER", 100);
+
+		price.put("WHITE", 0);
+		price.put("BLACK", 15);
+		price.put("ORANGE", 25);
+		price.put("RED", 25);
+		price.put("BROWN", 30);
+		price.put("GRAY", 30);
+
+		return this.getChairManufCost() + price.get(getChairCategory().toUpperCase())
+				+ price.get(getChairColor().toUpperCase());
+
 	}
 
 	/**
@@ -299,17 +356,20 @@ public class ComputerChair extends Chair {
 	public double getDeliveryCost(String nameofCity) {
 
 		// COMPLETE THIS
-		HashMap<String, Integer> deliveryCost = new HashMap<>();
-		deliveryCost.put("Montreal", 65);
-		deliveryCost.put("Toronto", 35);
-		deliveryCost.put("Ottawa", 45);
+		HashMap<String, Integer> city = new HashMap<>();
+		city.put("TORONTO", 35);
+		city.put("MONTREAL", 65);
+		city.put("OTTAWA", 45);
 
-		boolean checkCityName = deliveryCost.containsKey(nameofCity);
-		if (!checkCityName) {
-			throw new IllegalArgumentException("Invalid city.");
+		try {
+			if (!city.containsKey(nameofCity.toUpperCase())) {
+				throw new IllegalArgumentException();
+			}
+			return city.get(nameofCity.toUpperCase()) + this.getChairPrice();
+		} catch (IllegalArgumentException e) {
+			throw e;
 		}
 
-		return this.getChairPrice() + deliveryCost.get(nameofCity);
 	}
 
 	/**
@@ -344,13 +404,17 @@ public class ComputerChair extends Chair {
 	private void checkChairNumberofWheels(int numberofWheels) {
 
 		// COMPLETE THIS
-		boolean checkWheels = (false || (numberofWheels >= 3 && numberofWheels <= 7));
-		for (int i = 2; i < 5 || checkWheels; i++) {
-			checkWheels = ((numberofWheels == (2 * i) - 1) || checkWheels ? true : false);
-		}
+		List<Integer> wheels = new ArrayList<>();
+		wheels.add(3);
+		wheels.add(5);
+		wheels.add(7);
 
-		if (checkWheels == false) {
-			throw new IllegalArgumentException("Invalid number of wheels.");
+		try {
+			if (!wheels.contains(numberofWheels)) {
+				throw new IllegalArgumentException("Invalid number of wheels");
+			}
+		} catch (IllegalArgumentException e) {
+			throw e;
 		}
 	}
 
@@ -388,16 +452,18 @@ public class ComputerChair extends Chair {
 	 */
 
 	private void checkChairCategory(String chairCategory) {
+		List<String> category = new ArrayList<>();
+		category.add("BASIC");
+		category.add("NORMAL");
+		category.add("SUPER");
 
-		// COMPLETE THIS
-		List<String> categories = new ArrayList<>();
-		categories.add("Basic"); categories.add("Normal"); categories.add("Super");
-		boolean checkCats = categories.contains(chairCategory);
-		
-		if (!checkCats) {
-			throw new IllegalArgumentException("Invalid category");
+		try {
+			if (!category.contains(chairCategory)) {
+				throw new IllegalArgumentException("Invalid category");
+			}
+		} catch (IllegalArgumentException e) {
+			throw e;
 		}
-
 	}
 
 	/**

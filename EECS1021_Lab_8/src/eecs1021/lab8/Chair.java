@@ -26,7 +26,6 @@ public class Chair {
 	 * 
 	 */
 
-	// COMPLETE THIS
 	protected static int numChairs = 0;
 	/**
 	 * The Id of chair object
@@ -84,14 +83,11 @@ public class Chair {
 	 * </p>
 	 */
 	public Chair() {
-
-		// COMPLETE THIS
 		this.chairColor = "WHITE";
 		this.chairShape = "RECTANGLE";
 		this.chairManufCost = 0;
 		this.id = new Integer(numChairs);
 		numChairs++;
-
 	}
 
 	/**
@@ -160,8 +156,6 @@ public class Chair {
 	 * 
 	 */
 	public Chair(double chairManufCost, String chairShape, String chairColor) {
-
-		// COMPLETE THIS
 		List<String> choice = new ArrayList<>();
 		choice.add("WHITE");
 		choice.add("BLACK");
@@ -199,9 +193,7 @@ public class Chair {
 	 * @return numChairs The total number of Chair created so far
 	 */
 	public static int getNumberofChairCreated() {
-
-		// COMPLETE THIS
-		return numChairs;
+		return new Integer(numChairs);
 	}
 
 	/**
@@ -211,8 +203,6 @@ public class Chair {
 	 * 
 	 */
 	public static void decrementNumberofChairCreated() {
-
-		// COMPLETE THIS
 		numChairs--;
 	}
 
@@ -222,8 +212,7 @@ public class Chair {
 	 * @return id The ID of created Chair object
 	 */
 	public final int getId() {
-		// COMPLETE THIS
-		return this.id;
+		return new Integer(this.id);
 	}
 
 	/**
@@ -292,7 +281,6 @@ public class Chair {
 	 *                                  .
 	 */
 	private void set(String chairColor, String chairShape) {
-
 		List<String> choice = new ArrayList<>();
 		choice.add("RECTANGLE");
 		choice.add("SQUARE");

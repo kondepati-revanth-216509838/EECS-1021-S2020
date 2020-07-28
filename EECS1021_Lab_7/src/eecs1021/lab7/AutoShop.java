@@ -45,7 +45,6 @@ public class AutoShop {
 	 * @param owner the owner of this auto shop
 	 */
 	public AutoShop(ShopOwner owner) {
-		// COMPLETED
 		this.owner = owner;
 		
 	}
@@ -58,7 +57,6 @@ public class AutoShop {
 	 * @param other the auto shop to copy
 	 */
 	public AutoShop(AutoShop other) {
-		// COMPLETD
 		this.owner = other.getOwner();
 		this.vehicles = other.vehicles;
 	
@@ -89,18 +87,15 @@ public class AutoShop {
 	 *                                  this auto shop
 	 */
 	public void changeOwner(ShopOwner currentOwner, ShopOwner newOwner) {
-
-		// COMPLETED
 		try {
 			if (this.owner.equals(currentOwner)) {
 				this.owner = newOwner;
 			} else {
 				throw new IllegalArgumentException("The given current owner is not the actual current owner.");
 			}
-		} catch (Exception e) {
-			throw new IllegalArgumentException("The given current owner is not the actual current owner.");
+		} catch (IllegalArgumentException e) {
+			throw e;
 		}
-		
 	}
 
 	/**
@@ -110,7 +105,6 @@ public class AutoShop {
 	 * @param vehicles a list of vehicles to add to this auto shop
 	 */
 	public void add(List<Vehicle> vehicles) {
-		// COMPLETE THIS
 		for (Vehicle nigga: vehicles) {
 			Vehicle key = nigga;
 			int value = this.vehicles.get(nigga) + 1;

@@ -64,10 +64,10 @@ public class ComputerChair extends Chair {
 	 * 
 	 */
 	public ComputerChair() {
-
-		// COMPLETE THIS
 		this.numberofWheels = 5;
 		this.chairCategory = "BASIC";
+		this.setChairColor("BLACK");
+		this.setChairShape("SQUARE");
 	}
 
 	/**
@@ -120,8 +120,6 @@ public class ComputerChair extends Chair {
 	 */
 	public ComputerChair(double chairManufCost, String chairShape, String chairColor, String chairCategory,
 			int numberofWheels) {
-
-		// COMPLETE THIS
 		List<Integer> wheels = new ArrayList<>();
 		wheels.add(3);
 		wheels.add(5);
@@ -139,6 +137,10 @@ public class ComputerChair extends Chair {
 		info.add("RED");
 		info.add("GRAY");
 
+		info.add("RECTANGLE");
+		info.add("SQUARE");
+		info.add("ROUND");
+
 		try {
 			if (chairManufCost < 0.0) {
 				throw new IllegalArgumentException("Invalid cost.");
@@ -150,6 +152,14 @@ public class ComputerChair extends Chair {
 
 			if (!info.contains(chairCategory.toUpperCase())) {
 				throw new IllegalArgumentException("Invalid category");
+			}
+
+			if (!info.contains(chairShape.toUpperCase())) {
+				throw new IllegalArgumentException("Invalid shape");
+			}
+
+			if (!wheels.contains(numberofWheels)) {
+				throw new IllegalArgumentException("Invalid number of wheels");
 			}
 
 			this.setChairManufCost(chairManufCost);
@@ -178,7 +188,6 @@ public class ComputerChair extends Chair {
 	 */
 
 	private void checkChairShape(String chairShape) {
-		// COMPLETE THIS
 		List<String> shapes = new ArrayList<>();
 		shapes.add("RECTANGLE");
 		shapes.add("SQUARE");
@@ -207,8 +216,6 @@ public class ComputerChair extends Chair {
 	 */
 
 	private void checkChairColor(String chairColor) {
-
-		// COMPLETE THIS
 		List<String> color = new ArrayList<>();
 		color.add("BLACK");
 		color.add("WHITE");
@@ -278,8 +285,6 @@ public class ComputerChair extends Chair {
 	 */
 
 	public double getChairPrice() {
-
-		// COMPLETE THIS
 		HashMap<String, Integer> price = new HashMap<>();
 
 		price.put("BASIC", 85);
@@ -354,8 +359,6 @@ public class ComputerChair extends Chair {
 	 */
 
 	public double getDeliveryCost(String nameofCity) {
-
-		// COMPLETE THIS
 		HashMap<String, Integer> city = new HashMap<>();
 		city.put("TORONTO", 35);
 		city.put("MONTREAL", 65);
@@ -363,7 +366,7 @@ public class ComputerChair extends Chair {
 
 		try {
 			if (!city.containsKey(nameofCity.toUpperCase())) {
-				throw new IllegalArgumentException();
+				throw new IllegalArgumentException("Invalid city");
 			}
 			return city.get(nameofCity.toUpperCase()) + this.getChairPrice();
 		} catch (IllegalArgumentException e) {
@@ -402,8 +405,6 @@ public class ComputerChair extends Chair {
 	 */
 
 	private void checkChairNumberofWheels(int numberofWheels) {
-
-		// COMPLETE THIS
 		List<Integer> wheels = new ArrayList<>();
 		wheels.add(3);
 		wheels.add(5);
@@ -473,8 +474,7 @@ public class ComputerChair extends Chair {
 	 * @return the computer chair category
 	 */
 	public String getChairCategory() {
-		// COMPLETE THIS
-		return this.chairCategory;
+		return new String(this.chairCategory);
 	}
 
 	/**
@@ -483,8 +483,7 @@ public class ComputerChair extends Chair {
 	 * @return the number of wheels of this computer chair
 	 */
 	public int getNumberofWheels() {
-		// COMPLETE THIS
-		return this.numberofWheels;
+		return new Integer(this.numberofWheels);
 	}
 
 	/**
@@ -510,7 +509,6 @@ public class ComputerChair extends Chair {
 
 	@Override
 	public String toString() {
-		// COMPLETE THIS
 		return "(" + this.getChairShape().toUpperCase() + ", " + this.getChairColor().toUpperCase() + ", "
 				+ this.getChairManufCost() + ", " + this.getChairCategory().toUpperCase() + ", " + this.numberofWheels
 				+ ")";

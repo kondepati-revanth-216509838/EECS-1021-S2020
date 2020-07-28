@@ -66,11 +66,11 @@ public class ConferenceChair extends Chair {
 	 * 
 	 */
 	public ConferenceChair() {
-
-		// COMPLETE THIS
-		
-		
-
+		this.numberofWheels = 4;
+		this.chairCategory = "BASIC";
+		this.setChairColor("BLACK");
+		this.setChairShape("SQUARE");
+		this.setChairManufCost(15.0);
 	}
 
 	/**
@@ -127,9 +127,57 @@ public class ConferenceChair extends Chair {
 	 */
 	public ConferenceChair(double chairManufCost, String chairShape, String chairColor, String chairCategory,
 			int numberofWheels) {
+		List<Integer> wheels = new ArrayList<>();
+		wheels.add(4);
+		wheels.add(6);
+		wheels.add(8);
 
-		// COMPLETE THIS
-		
+		List<String> info = new ArrayList<>();
+		info.add("BASIC");
+		info.add("NORMAL");
+		info.add("DELUX");
+
+		info.add("BLACK");
+		info.add("WHITE");
+		info.add("PINK");
+		info.add("BROWN");
+		info.add("BLUE");
+		info.add("GREEN");
+
+		info.add("RECTANGLE");
+		info.add("SQUARE");
+		info.add("OVAL");
+
+		try {
+			if (chairManufCost < 0.0) {
+				throw new IllegalArgumentException("Invalid cost.");
+			}
+
+			if (!info.contains(chairColor.toUpperCase())) {
+				throw new IllegalArgumentException("Invalid color choice");
+			}
+
+			if (!info.contains(chairCategory.toUpperCase())) {
+				throw new IllegalArgumentException("Invalid category");
+			}
+
+			if (!info.contains(chairShape.toUpperCase())) {
+				throw new IllegalArgumentException("Invalid shape");
+			}
+
+			if (!wheels.contains(numberofWheels)) {
+				throw new IllegalArgumentException("Invalid number of wheels");
+			}
+
+			this.setChairManufCost(chairManufCost);
+			this.chairCategory = chairCategory.toUpperCase();
+			this.numberofWheels = numberofWheels;
+			this.setChairColor(chairColor.toUpperCase());
+			this.setChairShape(chairShape.toUpperCase());
+
+		} catch (IllegalArgumentException e) {
+			throw e;
+		}
 	}
 
 	/**
@@ -146,10 +194,18 @@ public class ConferenceChair extends Chair {
 	 */
 
 	private void checkChairShape(String chairShape) {
-		// COMPLETE THIS
-
+		List<String> shape = new ArrayList<>();
 		
-
+		shape.add("RECTANGLE"); shape.add("SQUARE"); shape.add("OVAL");
+		
+		try {
+			if (!shape.contains(chairShape.toUpperCase())) {
+				throw new IllegalArgumentException("Invalid shape");
+			}
+		} catch (IllegalArgumentException e) {
+			throw e;
+		}
+		
 	}
 
 	/**
@@ -166,9 +222,22 @@ public class ConferenceChair extends Chair {
 	 */
 
 	private void checkChairColor(String chairColor) {
-
-		// COMPLETE THIS
-
+		List<String> color = new ArrayList<>();
+		
+		color.add("BLACK");
+		color.add("WHITE");
+		color.add("PINK");
+		color.add("BROWN");
+		color.add("BLUE");
+		color.add("GREEN");
+		
+		try {
+			if (!color.contains(chairColor.toUpperCase())) {
+				throw new IllegalArgumentException("Invalid color");
+			}
+		} catch (IllegalArgumentException e) {
+			throw e;
+		}
 		
 	}
 
@@ -202,9 +271,18 @@ public class ConferenceChair extends Chair {
 
 	private void checkChairNumberofWheels(int numberofWheels) {
 
-		// COMPLETE THIS
+		List<Integer> wheels = new ArrayList<>();
+		wheels.add(4);
+		wheels.add(6);
+		wheels.add(8);
 
-		
+		try {
+			if (!wheels.contains(numberofWheels)) {
+				throw new IllegalArgumentException("Invalid number of wheels.");
+			}
+		} catch (IllegalArgumentException e) {
+			throw e;
+		}
 
 	}
 
@@ -231,22 +309,28 @@ public class ConferenceChair extends Chair {
 	 * 
 	 * @throws IllegalArgumentException
 	 * 
-	 *                               <p>
-	 *                               if the chair category is not one of the
-	 *                               following choices <strong><code>Basic</code> ,
-	 *                               <code>Normal</code> or
-	 *                               <code>Delux</code></strong>
-	 *                               </p>
-	 *                               .
+	 *                                  <p>
+	 *                                  if the chair category is not one of the
+	 *                                  following choices <strong><code>Basic</code>
+	 *                                  , <code>Normal</code> or
+	 *                                  <code>Delux</code></strong>
+	 *                                  </p>
+	 *                                  .
 	 * 
 	 */
 
 	private void checkChairCategory(String chairCategory) {
-
-		// COMPLETE THIS
-
+		List<String> category = new ArrayList<>();
 		
-
+		category.add("BASIC"); category.add("NORMAL"); category.add("DELUX");
+		
+		try {
+			if (!category.contains(chairCategory.toUpperCase())) {
+				throw new IllegalArgumentException("Invalid category");
+			}
+		} catch (IllegalArgumentException e) {
+			throw e;
+		}
 	}
 
 	/**
@@ -306,10 +390,13 @@ public class ConferenceChair extends Chair {
 	 */
 
 	public double getChairPrice() {
-
-		// COMPLETE THIS
-
+		HashMap<String, Integer> price = new HashMap<>();
+		price.put("BASIC", 55); price.put("NORMAL", 75); price.put("DELUX", 90);
 		
+		price.put("WHITE", 0); price.put("BLACK", 5); price.put("BLUE", 10);
+		price.put("BROWN", 20); price.put("GREEN", 25); price.put("PINK", 35);
+		
+		return this.getChairManufCost() + price.get(this.getChairCategory().toUpperCase()) + price.get(this.getChairColor().toUpperCase());
 	}
 
 	/**
@@ -371,11 +458,17 @@ public class ConferenceChair extends Chair {
 	 */
 
 	public double getDeliveryCost(String nameofCity) {
-
-		// COMPLETE THIS
-
+		HashMap <String, Integer> city = new HashMap<>();
+		city.put("EDMONTON", 55); city.put("WINNIPEG", 65); city.put("HALIFAX", 85);
 		
-
+		try {
+			if (!city.containsKey(nameofCity.toUpperCase())) {
+				throw new IllegalArgumentException("Invalid city.");
+			}
+			return this.getChairPrice() + city.get(nameofCity.toUpperCase());			
+		} catch (IllegalArgumentException e) {
+			throw e;
+		}
 	}
 
 	/**
@@ -385,8 +478,7 @@ public class ConferenceChair extends Chair {
 	 * @return the Conference chair category
 	 */
 	public String getChairCategory() {
-		// COMPLETE THIS
-	
+		return new String(this.chairCategory);
 	}
 
 	/**
@@ -395,8 +487,7 @@ public class ConferenceChair extends Chair {
 	 * @return the number of wheels of this Conference chair
 	 */
 	public int getNumberofWheels() {
-		// COMPLETE THIS
-		
+		return new Integer(this.numberofWheels);
 	}
 
 	/**
@@ -421,8 +512,9 @@ public class ConferenceChair extends Chair {
 
 	@Override
 	public String toString() {
-		// COMPLETE THIS
-		
+		return "(" + this.getChairShape().toUpperCase() + ", " + this.getChairColor() + ", " + this.getChairManufCost()
+				+ ", " + this.getChairCategory() + ", " + this.getNumberofWheels() + ")";
+
 	}
 
 }
